@@ -245,6 +245,8 @@ pub trait VM: Sized {
     fn sys_write_output(&mut self, value: NonEmptyValue) -> VMResult<()>;
 
     fn sys_end(&mut self) -> VMResult<()>;
+
+    fn is_processing(&self) -> bool;
 }
 
 // HOW TO USE THIS API

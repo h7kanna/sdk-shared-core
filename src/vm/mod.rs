@@ -455,6 +455,10 @@ impl super::VM for CoreVM {
     fn sys_end(&mut self) -> Result<(), VMError> {
         self.do_transition(SysEnd)
     }
+
+    fn is_processing(&self) -> bool {
+        matches!(&self.last_transition, Ok(State::Processing { .. }))
+    }
 }
 
 fn duration_to_wakeup_time(duration: Duration) -> u64 {
